@@ -1,0 +1,147 @@
+audio {
+  display: none;
+}
+
+.nav {
+  max-width: 1400px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    color: #918f8f;
+    transition: 0.5s;
+
+    &:hover {
+      color: #595757;
+    }
+  }
+}
+
+.header {
+  #audioToggleBtn {
+    background: linear-gradient(135deg, #f7b500, #e50914);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+  }
+
+  #audioToggleBtn:hover {
+    background: linear-gradient(135deg, #e50914, #f7b500);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #audioToggleBtn:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  #toggleLanguageBtn {
+    background: linear-gradient(135deg, #f7b500, #e50914);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    margin-top: 10px;
+  }
+
+  #toggleLanguageBtn:hover {
+    background: linear-gradient(135deg, #e50914, #f7b500);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #toggleLanguageBtn:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .verstappen-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    color: #fff;
+    background: linear-gradient(135deg, #e50914, #f7b500);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200%;
+  }
+
+  .verstappen-text:hover {
+    transform: translateY(-10px);
+    background-position: 100% 100%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .verstappen-text::before {
+    content: "Макс Верстаппен";
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    animation: moveText 4s ease-in-out infinite;
+  }
+
+  @keyframes moveText {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+  .verstappen-text p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 70px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    line-height: 1.8;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .verstappen-text:hover p {
+    transform: translateY(5px);
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+}

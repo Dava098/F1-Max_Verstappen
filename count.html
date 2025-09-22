@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./img/f1.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Подписчики Макса Верстаппена</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #111111, #1a1a1a);
+        color: #eee;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+      }
+
+      .profile {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .profile img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #ff0000;
+        box-shadow: 0 0 15px #ff0000;
+        transition: 0.3s ease;
+      }
+
+      .profile img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #ff4c4c;
+      }
+
+      .profile h1 {
+        font-size: 2.5rem;
+        color: #ff0000;
+        margin: 15px 0 10px;
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin-bottom: 50px;
+      }
+
+      .social-links a {
+        color: #eee;
+        font-size: 3.5rem;
+        transition: 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-links a:hover {
+        color: #ff0000;
+        transform: scale(1.2);
+      }
+
+      .counters {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .counter {
+        background: #222;
+        border-radius: 15px;
+        padding: 25px 35px;
+        min-width: 220px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      }
+
+      .counter i {
+        font-size: 3rem;
+        color: #ff0000;
+        margin-bottom: 10px;
+      }
+
+      .counter .count {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #ff0000;
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      .counter .label {
+        font-size: 1.1rem;
+        margin-top: 5px;
+        color: #ccc;
+      }
+
+      .back-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #ff0000;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+        transition: transform 0.2s;
+        margin-top: 60px;
+      }
+
+      .back-button:hover {
+        background-color: #cc0000;
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 600px) {
+        .social-links {
+          gap: 30px;
+        }
+        .counter {
+          padding: 20px;
+          min-width: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile">
+      <img src="./img/maxvictory_hires.jpg" alt="Max Verstappen" />
+      <h1>Макс Верстаппен</h1>
+    </div>
+
+    <div class="social-links">
+      <a
+        href="https://www.youtube.com/channel/UC1Aha9aLmlkIbBN-iAttBzw"
+        target="_blank"
+        title="YouTube"
+      >
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <a
+        href="https://www.instagram.com/maxverstappen1/"
+        target="_blank"
+        title="Instagram"
+      >
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+    <div class="counters">
+      <div class="counter">
+        <i class="fab fa-youtube"></i>
+        <div class="count" id="youtubeCount">-</div>
+        <div class="label">Подписчиков на YouTube</div>
+      </div>
+
+      <div class="counter">
+        <i class="fab fa-instagram"></i>
+        <div class="count" id="instagramCount">-</div>
+        <div class="label">Подписчиков в Instagram</div>
+      </div>
+    </div>
+
+    <div>
+      <a href="./index.html" class="back-button">← Назад на главную</a>
+    </div>
+
+    <script>
+      const counts = {
+        youtube: 618000,
+        instagram: 16100000,
+      };
+
+      function formatNumber(num) {
+        return num.toLocaleString("ru-RU");
+      }
+
+      function animateCount(id, target, duration = 1500) {
+        const el = document.getElementById(id);
+        let current = 0;
+        const step = Math.ceil(target / (duration / 20));
+
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = formatNumber(current);
+        }, 20);
+      }
+
+      window.onload = () => {
+        animateCount("youtubeCount", counts.youtube);
+        animateCount("instagramCount", counts.instagram);
+      };
+    </script>
+  </body>
+</html>

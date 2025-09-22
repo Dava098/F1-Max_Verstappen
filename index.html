@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./img/f1.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+
+    <style>
+      body {
+        background-color: #f5f5f5;
+        color: #222;
+        transition: background-color 0.5s, color 0.5s;
+      }
+
+      body.dark-theme {
+        background-color: #121212;
+        color: #eee;
+      }
+
+      .nav {
+        background-color: #fff;
+        padding: 1rem;
+        transition: background-color 0.5s;
+      }
+
+      body.dark-theme .nav {
+        background-color: #222;
+      }
+
+      button {
+        padding: 0.6rem 1.2rem;
+        border: none;
+        cursor: pointer;
+        background-color: #ddd;
+        color: #222;
+        border-radius: 4px;
+        margin-right: 10px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      body.dark-theme button {
+        background-color: #444;
+        color: #eee;
+      }
+
+      .link {
+        color: #222;
+        margin-right: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      body.dark-theme .link {
+        color: #eee;
+      }
+
+      button#toggleThemeBtn {
+        position: relative;
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        border: none;
+        border-radius: 40px;
+        cursor: pointer;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(255, 65, 108, 0.6),
+          0 0 10px rgba(255, 75, 43, 0.7);
+        transition: ease, box-shadow 0.4s ease, transform 0.2s ease;
+        user-select: none;
+        z-index: 0;
+      }
+
+      button#toggleThemeBtn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -25%;
+        width: 150%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(255, 255, 255, 0.1) 60%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(25deg);
+        transition: all 0.7s ease;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      button#toggleThemeBtn:hover {
+        background: linear-gradient(135deg, #ff6a92, #ff6843);
+        box-shadow: 0 6px 20px rgba(255, 65, 108, 0.8),
+          0 0 15px rgba(255, 75, 43, 0.9);
+        transform: translateY(-4px);
+      }
+
+      button#toggleThemeBtn:hover::before {
+        left: 100%;
+        transition: all 0.7s ease;
+      }
+
+      button#toggleThemeBtn:active {
+        transform: translateY(1px);
+        box-shadow: 0 3px 10px rgba(255, 65, 108, 0.5),
+          0 0 7px rgba(255, 75, 43, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="verstappenAudio" preload="auto">
+      <source
+        src="audio/Carte_Blanq_Maxx_Power_-_33_Max_Verstappen_75036024.mp3"
+        type="audio/mpeg"
+      />
+      Your browser does not support the audio element.
+    </audio>
+
+    <nav class="nav" data-aos="fade-down">
+      <a class="link" href="./video.html">Видео</a>
+      <a class="link" href="./index.html">О себе</a>
+      <a class="link" href="./count.html">Счетчик Подписчиков</a>
+    </nav>
+    <header class="header">
+      <div class="container" data-aos="fade-down">
+        <div class="block1">
+          <h2 class="title" data-aos="fade-down">Hello, I'm Max Verstappen</h2>
+
+          <button id="audioToggleBtn" data-aos="fade-down">
+            Включить музыку
+          </button>
+
+          <button id="toggleLanguageBtn" data-aos="fade-down">
+            Переключить язык
+          </button>
+
+          <button id="toggleThemeBtn" data-aos="fade-down">Сменить тему</button>
+
+          <div class="verstappen-text" data-aos="fade-down">
+            <p id="verstappenText">
+              Макс Верстаппен — талантливый и бесстрашный гонщик, который с
+              каждым сезоном всё больше удивляет своими результатами в
+              Формуле-1. Благодаря невероятной скорости, решительности и
+              стратегическому мышлению он уже заслужил звание одного из самых
+              великих пилотов своего поколения. Его стиль вождения, умение
+              адаптироваться к любым условиям и стремление к победе делают его
+              настоящим лидером на трассе.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <img
+        src="./img/Max-Verstappen-Spanish-GP.jpg"
+        alt="max"
+        data-aos="fade-down"
+      />
+    </header>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        easing: "ease-out-cubic",
+        once: true,
+      });
+
+      const toggleThemeBtn = document.getElementById("toggleThemeBtn");
+
+      function setTheme(theme) {
+        if (theme === "dark") {
+          document.body.classList.add("dark-theme");
+        } else {
+          document.body.classList.remove("dark-theme");
+        }
+        localStorage.setItem("theme", theme);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        setTheme(savedTheme);
+      });
+
+      toggleThemeBtn.addEventListener("click", () => {
+        if (document.body.classList.contains("dark-theme")) {
+          setTheme("light");
+        } else {
+          setTheme("dark");
+        }
+      });
+    </script>
+  </body>
+</html>
